@@ -1,0 +1,55 @@
+name: claude_cuc
+description: A close up character guessing game
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.17.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.2
+  audioplayers: ^5.2.0  # For playing sound effects
+  shared_preferences: ^2.2.0
+  path_provider: ^2.0.15
+  flutter_riverpod: ^2.6.1
+  riverpod_annotation: ^2.6.1
+  percent_indicator: ^4.2.3
+  responsive_framework: ^1.4.0
+  fluttertoast: ^8.2.4  # For showing toast messages
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+  riverpod_generator: ^2.6.5
+  build_runner: ^2.4.15
+  custom_lint: ^0.7.5
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/      # Folder for photos
+    - assets/sounds/      # Folder for sound files (e.g., correct.mp3)
+    - assets/data/      # Folder for json
+  fonts:
+    - family: CenturyGothic
+      fonts:
+        - asset: assets/fonts/century/CenturyGothic-Regular.ttf
+          weight: 400
+          style: normal
+        - asset: assets/fonts/century/CenturyGothic-Bold.ttf
+          weight: 700
+          style: normal
+        - asset: assets/fonts/century/CenturyGothic-Italic.ttf
+          weight: 400
+          style: italic
+        - asset: assets/fonts/century/CenturyGothic-BoldItalic.ttf
+          weight: 700
+          style: italic
+    - family: Futura
+      fonts:
+        - asset: assets/fonts/futura/FuturaCondensed.ttf
+          weight: 700

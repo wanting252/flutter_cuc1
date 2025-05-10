@@ -1,0 +1,24 @@
+{
+	"episodes" : [
+		{"id" : "beginner", "name" : "BEGINNER PACK", "desc" : "For beginner to start", "requiredCount" : 0, "playCount" : 932},
+		{"id" : "classic", "name" : "BASIC", "desc" : "Practice with close up characters.", "requiredCount" : 20, "playCount" : 1209},
+		{"id" : "movie", "name" : "MOVIE CHARACTERS", "desc" : "Characters from popular movies and tv shows.", "requiredCount" : 30, "playCount" : 1932},
+		{"id" : "superhero", "name" : "SUPERHERO", "desc" : "Characters DC and marvel universe", "requiredCount" : 30, "playCount" : 1932}
+	],
+	"levels" : {
+		"classic" : [
+			{ "id":"level1", "icon": "classic1", "name":"Level 01", "requiredCount" : 0 },
+			{ "id":"level2", "icon": "classic2", "name":"Level 02", "requiredCount" : 10 },
+			{ "id":"level6", "icon": "classic3", "name":"Level 06", "requiredCount" : 10 }
+		],
+		"icon" : [
+			{ "id":"level4", "icon": "icon1", "name":"Icon 01", "requiredCount" : 0, "price" : 1 },
+			{ "id":"level5", "icon": "icon2", "name":"Icon 02", "requiredCount" : 0, "price" : 1 }
+		],
+		"movie" : [
+			{ "id":"bmovie_movie_01", "icon": "movie", "name":"Movie 01", "remote" : false, "requiredCount" : 0, "price" : 1 },
+			{ "id":"bmovie_movie_02", "icon": "movie", "name":"Movie 02", "remote" : false, "requiredCount" : 0, "price" : 1 }
+		]
+	},
+	"data" : {"daily":["daily__y5E3CG","daily__ywIHM","daily__yNMOLE","daily__54IG^1H45","daily__yMJ","daily__HIMN5D^yILF5","daily__CACOF","daily__NC221L^L5AIL","daily__I2H14","daily__GOAACw^BJF1L"],"icon_level2":["icon_level2__L5JIILN^GLINM","icon_level2__M5F225J","icon_level2__HCFJ1B3^5CFL1B3","icon_level2__E31D^E31D","icon_level2__BNwI5G","icon_level2__H1NN1BH1G^L4","icon_level2__6O5NCN","icon_level2__5E1D","icon_level2__OEIA^HIM","icon_level2__N5H1FJ^HC1NJ13"],"icon_level3":["icon_level3__y5E3CG","icon_level3__ywIHM","icon_level3__yNMOLE","icon_level3__54IG^1H45","icon_level3__yMJ","icon_level3__HIMN5D^yILF5","icon_level3__CACOF","icon_level3__NC221L^L5AIL","icon_level3__I2H14","icon_level3__GOAACw^BJF1L"],"icon_level2":["icon_level2__L5JIILN^GLINM","icon_level2__M5F225J","icon_level2__HCFJ1B3^5CFL1B3","icon_level2__E31D^E31D","icon_level2__BNwI5G","icon_level2__H1NN1BH1G^L4","icon_level2__6O5NCN","icon_level2__5E1D","icon_level2__OEIA^HIM","icon_level2__N5H1FJ^HC1NJ13"],"icon_level1":["icon_level2__L5JIILN^GLINM","icon_level2__M5F225J","icon_level2__HCFJ1B3^5CFL1B3","icon_level2__E31D^E31D","icon_level2__BNwI5G","icon_level2__H1NN1BH1G^L4","icon_level2__6O5NCN","icon_level2__5E1D","icon_level2__OEIA^HIM","icon_level2__N5H1FJ^HC1NJ13"],"icon_level1":["icon_level2__L5JIILN^GLINM","icon_level2__M5F225J","icon_level2__HCFJ1B3^5CFL1B3","icon_level2__E31D^E31D","icon_level2__BNwI5G","icon_level2__H1NN1BH1G^L4","icon_level2__6O5NCN","icon_level2__5E1D","icon_level2__OEIA^HIM","icon_level2__N5H1FJ^HC1NJ13"]}
+}
