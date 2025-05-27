@@ -17,7 +17,7 @@ dependencies:
   flutter_riverpod: ^2.6.1
   riverpod_annotation: ^2.6.1
   percent_indicator: ^4.2.3
-  responsive_framework: ^1.4.0
+  responsive_framework: ^1.5.1
   fluttertoast: ^8.2.4  # For showing toast messages
 
 dev_dependencies:

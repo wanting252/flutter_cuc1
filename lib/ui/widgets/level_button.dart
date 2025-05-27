@@ -28,7 +28,7 @@ class LevelButton extends StatelessWidget {
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(12),
-          boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 3)],
+          boxShadow: const [BoxShadow(color: Colors.black12, blurRadius: 3)],
         ),
         child: Row(
           children: [

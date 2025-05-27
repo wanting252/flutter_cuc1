@@ -1,17 +1,15 @@
-import 'package:claude_cuc/ui/test/test_episode_button.dart';
+import 'package:claude_cuc/ui/screens/settings_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'data/models/d_player.dart';
-import 'logic/test/string_util_test.dart';
+import 'package:responsive_framework/responsive_framework.dart';
+import 'package:claude_cuc/data/models/d_player.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // await DPlayer.loadData(); // Or any other async initialization
-  runApp(
-    const ProviderScope(
-      child: MyApp(),
-    ),
-  );
+  // Initialize DPlayer data
+  await DPlayer.loadData();
+  // Initialize daily mission system
+  await DPlayer.initializeDailyMission();
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -20,16 +18,22 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Close Up Pics',
+      title: 'Close Up Character',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        fontFamily: 'CenturyGothic',
-        textTheme: const TextTheme(
-          bodyMedium: TextStyle(fontWeight: FontWeight.w400),
-        ), // Set global font
         primarySwatch: Colors.blue,
-        scaffoldBackgroundColor: const Color(0xFFE6F0FA),
+        fontFamily: 'CenturyGothic',
       ),
-      home: const TestEpisodeButton(),
+      builder: (context, child) => ResponsiveBreakpoints.builder(
+        child: child!,
+        breakpoints: [
+          const Breakpoint(start: 0, end: 450, name: MOBILE),
+          const Breakpoint(start: 451, end: 800, name: TABLET),
+          const Breakpoint(start: 801, end: 1920, name: DESKTOP),
+          const Breakpoint(start: 1921, end: double.infinity, name: '4K'),
+        ],
+      ),
+      home: const SettingsScreen(),
     );
   }
 }

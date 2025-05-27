@@ -19,7 +19,7 @@ class _MyAppState extends State<TestButtonScreen> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(title: Text("Image Button Example")),
+        appBar: AppBar(title: const Text("Image Button Example")),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -28,10 +28,10 @@ class _MyAppState extends State<TestButtonScreen> {
                 key: buttonKey,
                 imagePath: 'assets/button_normal.png',
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: changeCharacter,
-                child: Text("Change Character"),
+                child: const Text("Change Character"),
               ),
             ],
           ),

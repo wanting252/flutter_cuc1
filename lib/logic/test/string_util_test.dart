@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import '../utils/d_string_util.dart';
 
 class StringUtilTest {

@@ -1,24 +1,197 @@
-{
-	"episodes" : [
-		{"id" : "beginner", "name" : "BEGINNER PACK", "desc" : "For beginner to start", "requiredCount" : 0, "playCount" : 932},
-		{"id" : "classic", "name" : "BASIC", "desc" : "Practice with close up characters.", "requiredCount" : 20, "playCount" : 1209},
-		{"id" : "movie", "name" : "MOVIE CHARACTERS", "desc" : "Characters from popular movies and tv shows.", "requiredCount" : 30, "playCount" : 1932},
-		{"id" : "superhero", "name" : "SUPERHERO", "desc" : "Characters DC and marvel universe", "requiredCount" : 30, "playCount" : 1932}
-	],
-	"levels" : {
-		"classic" : [
-			{ "id":"level1", "icon": "classic1", "name":"Level 01", "requiredCount" : 0 },
-			{ "id":"level2", "icon": "classic2", "name":"Level 02", "requiredCount" : 10 },
-			{ "id":"level6", "icon": "classic3", "name":"Level 06", "requiredCount" : 10 }
-		],
-		"icon" : [
-			{ "id":"level4", "icon": "icon1", "name":"Icon 01", "requiredCount" : 0, "price" : 1 },
-			{ "id":"level5", "icon": "icon2", "name":"Icon 02", "requiredCount" : 0, "price" : 1 }
-		],
-		"movie" : [
-			{ "id":"bmovie_movie_01", "icon": "movie", "name":"Movie 01", "remote" : false, "requiredCount" : 0, "price" : 1 },
-			{ "id":"bmovie_movie_02", "icon": "movie", "name":"Movie 02", "remote" : false, "requiredCount" : 0, "price" : 1 }
-		]
-	},
-	"data" : {"daily":["daily__y5E3CG","daily__ywIHM","daily__yNMOLE","daily__54IG^1H45","daily__yMJ","daily__HIMN5D^yILF5","daily__CACOF","daily__NC221L^L5AIL","daily__I2H14","daily__GOAACw^BJF1L"],"icon_level2":["icon_level2__L5JIILN^GLINM","icon_level2__M5F225J","icon_level2__HCFJ1B3^5CFL1B3","icon_level2__E31D^E31D","icon_level2__BNwI5G","icon_level2__H1NN1BH1G^L4","icon_level2__6O5NCN","icon_level2__5E1D","icon_level2__OEIA^HIM","icon_level2__N5H1FJ^HC1NJ13"],"icon_level3":["icon_level3__y5E3CG","icon_level3__ywIHM","icon_level3__yNMOLE","icon_level3__54IG^1H45","icon_level3__yMJ","icon_level3__HIMN5D^yILF5","icon_level3__CACOF","icon_level3__NC221L^L5AIL","icon_level3__I2H14","icon_level3__GOAACw^BJF1L"],"icon_level2":["icon_level2__L5JIILN^GLINM","icon_level2__M5F225J","icon_level2__HCFJ1B3^5CFL1B3","icon_level2__E31D^E31D","icon_level2__BNwI5G","icon_level2__H1NN1BH1G^L4","icon_level2__6O5NCN","icon_level2__5E1D","icon_level2__OEIA^HIM","icon_level2__N5H1FJ^HC1NJ13"],"icon_level1":["icon_level2__L5JIILN^GLINM","icon_level2__M5F225J","icon_level2__HCFJ1B3^5CFL1B3","icon_level2__E31D^E31D","icon_level2__BNwI5G","icon_level2__H1NN1BH1G^L4","icon_level2__6O5NCN","icon_level2__5E1D","icon_level2__OEIA^HIM","icon_level2__N5H1FJ^HC1NJ13"],"icon_level1":["icon_level2__L5JIILN^GLINM","icon_level2__M5F225J","icon_level2__HCFJ1B3^5CFL1B3","icon_level2__E31D^E31D","icon_level2__BNwI5G","icon_level2__H1NN1BH1G^L4","icon_level2__6O5NCN","icon_level2__5E1D","icon_level2__OEIA^HIM","icon_level2__N5H1FJ^HC1NJ13"]}
+﻿{
+    "levels":  {
+                   "icon":  [
+                                {
+                                    "id":  "icon1",
+                                    "requiredCount":  0
+                                },
+                                {
+                                    "id":  "icon2",
+                                    "requiredCount":  10
+                                }
+                            ],
+                   "starter":  [
+                                   {
+                                       "id":  "starter1",
+                                       "requiredCount":  0
+                                   },
+                                   {
+                                       "id":  "starter2",
+                                       "requiredCount":  10
+                                   },
+                                   {
+                                       "id":  "starter3",
+                                       "requiredCount":  20
+                                   }
+                               ],
+                   "challenger":  [
+                                      {
+                                          "id":  "challenger1",
+                                          "requiredCount":  0
+                                      },
+                                      {
+                                          "id":  "challenger2",
+                                          "requiredCount":  10
+                                      }
+                                  ]
+               },
+    "data":  {
+                 "challenger2":  [
+                                     "challenger2__0__Ym9iYWZldHQ",
+                                     "challenger2__1__ZmlvbmE",
+                                     "challenger2__2__bmluYXNheWVycw",
+                                     "challenger2__3__bmFiYml0",
+                                     "challenger2__4__bWV3dHdv",
+                                     "challenger2__5__a2lsbGVyY3JvYw",
+                                     "challenger2__6__dGlnZ2Vy",
+                                     "challenger2__7__a3JyaXNo"
+                                 ],
+                 "icon2":  [
+                               "icon2__0__bWVvd3Ro",
+                               "icon2__1__c25vd3doaXRl",
+                               "icon2__2__cGViYmxlcw",
+                               "icon2__3__c3Rvcm10cm9vcGVy",
+                               "icon2__4__c29uaWM",
+                               "icon2__5__amFrZQ",
+                               "icon2__6__dGl0ZXVm",
+                               "icon2__7__c3RpdGNo"
+                           ],
+                 "starter2":  [
+                                  "starter2__0__cG9wZXll",
+                                  "starter2__1__c3BvbmdlYm9i",
+                                  "starter2__2__d29sdmVyaW5l",
+                                  "starter2__3__b2g",
+                                  "starter2__4__ZGF2eWpvbmVz",
+                                  "starter2__5__bG9raQ",
+                                  "starter2__6__ZnJvZG8",
+                                  "starter2__7__Z3JlZW5sYW50ZXJu"
+                              ],
+                 "icon1":  [
+                               "icon1__0__bmFydXRv",
+                               "icon1__1__b2xhZg",
+                               "icon1__2__aGF1bnRlcg",
+                               "icon1__3__bWFyaWx5bm1vbnJvZQ",
+                               "icon1__4__YmF0bWFu",
+                               "icon1__5__dmVub20",
+                               "icon1__6__aG9tZXI",
+                               "icon1__7__Z2FkZ2V0"
+                           ],
+                 "daily":  [
+                               "daily__0__YmFydHNpbXBzb24",
+                               "daily__1__Zmlubg",
+                               "daily__2__YnV0dGhlYWQ",
+                               "daily__3__ZGV4dGVybW9yZ2Fu",
+                               "daily__4__YnJpYW5ncmlmZmlu",
+                               "daily__5__c25vb3B5",
+                               "daily__6__b2xhZg",
+                               "daily__7__Y2FsaW1lcm8",
+                               "daily__8__aXJvbm1hbg",
+                               "daily__9__cm9iaW5ob29k",
+                               "daily__10__ZGF2eWpvbmVz",
+                               "daily__11__c3RpdGNo",
+                               "daily__12__bmlja2Z1cnk",
+                               "daily__13__aGVtYW4",
+                               "daily__14__bHVjeQ",
+                               "daily__15__bWF4Y2FkeQ",
+                               "daily__16__c2NyYXQ",
+                               "daily__17__cGF0cmlja3N0YXI",
+                               "daily__18__bGluZ3Vpbmk",
+                               "daily__19__bGVhdGhlcmZhY2U",
+                               "daily__20__Ym9icGFycg",
+                               "daily__21__YWxhZGRpbg",
+                               "daily__22__YmFtYmk",
+                               "daily__23__b2JlbGl4",
+                               "daily__24__ZGllZ28",
+                               "daily__25__aGFkZXM",
+                               "daily__26__ZmF1bg",
+                               "daily__27__cG9jYWhvbnRhcw",
+                               "daily__28__ZWxla3RyYQ",
+                               "daily__29__c25vd3doaXRl",
+                               "daily__30__Y2FuZHltYW4",
+                               "daily__31__c3F1aWR3YXJk",
+                               "daily__32__d2lsbWE",
+                               "daily__33__cG8",
+                               "daily__34__YmVsbGU",
+                               "daily__35__am9uc25vdw",
+                               "daily__36__em9ycm8",
+                               "daily__37__bWFyZ2VzaW1wc29u",
+                               "daily__38__ZnJvem9uZQ",
+                               "daily__39__Z2l6bW8",
+                               "daily__40__Ymxpbms",
+                               "daily__41__YW5uaWV3aWxrZXM",
+                               "daily__42__dGl0YW4",
+                               "daily__43__Zm94eWxveHk",
+                               "daily__44__YmV0dHlib29w",
+                               "daily__45__aHVtYW50b3JjaA",
+                               "daily__46__bWl0dGVucw",
+                               "daily__47__a3VydGJhcmxvdw",
+                               "daily__48__c2VwaGlyb3Ro",
+                               "daily__49__c2lyaXVz",
+                               "daily__50__Ym9saXZhcg",
+                               "daily__51__c3BvdA",
+                               "daily__52__Z2lsbG1hbg",
+                               "daily__53__YW5ha2lu",
+                               "daily__54__YmlsbHk",
+                               "daily__55__Z2FnZWNyZWVk",
+                               "daily__56__Z3VzdGF2ZQ",
+                               "daily__57__d2lzaG1hc3Rlcg",
+                               "daily__58__ZGVja2Vy",
+                               "daily__59__cHVtcGtpbmhlYWQ",
+                               "daily__60__dmFuaGVsc2luZw",
+                               "daily__61__cmlkZGljaw"
+                           ],
+                 "challenger1":  [
+                                     "challenger1__0__bWFyaW8",
+                                     "challenger1__1__Y3Jvc3Nib25lcw",
+                                     "challenger1__2__c25vcmxheA",
+                                     "challenger1__3__Z2FtYml0",
+                                     "challenger1__4__bmFiYml0",
+                                     "challenger1__5__anluZXJzbw",
+                                     "challenger1__6__ZnJhbms",
+                                     "challenger1__7__ZmFsY29u"
+                                 ],
+                 "starter1":  [
+                                  "starter1__0__bXJiZWFu",
+                                  "starter1__1__bWlrZQ",
+                                  "starter1__2__a2ltcG9zc2libGU",
+                                  "starter1__3__cHJlZGF0b3I",
+                                  "starter1__4__d29vZHk",
+                                  "starter1__5__dm9sZGVtb3J0",
+                                  "starter1__6__Ym9sdA",
+                                  "starter1__7__ZXQ"
+                              ],
+                 "starter3":  [
+                                  "starter3__0__bm9mYWNl",
+                                  "starter3__1__dHdlZXR5",
+                                  "starter3__2__cGlrYWNodQ",
+                                  "starter3__3__dGhvcg",
+                                  "starter3__4__bGFyYWNyb2Z0",
+                                  "starter3__5__YmFuZQ",
+                                  "starter3__6__aGFybGV5cXVpbm4",
+                                  "starter3__7__ZXJuaWU"
+                              ]
+             },
+    "episodes":  [
+                     {
+                         "requiredCount":  0,
+                         "name":  "STARTER PACK",
+                         "id":  "starter",
+                         "playCount":  724,
+                         "desc":  "starter pack for beginner to start funny"
+                     },
+                     {
+                         "requiredCount":  100,
+                         "name":  "ICON PACK",
+                         "id":  "icon",
+                         "playCount":  495,
+                         "desc":  "icon pack, for just play only with kid. Dont bother"
+                     },
+                     {
+                         "requiredCount":  200,
+                         "name":  "CHALLENGER PACK",
+                         "id":  "challenger",
+                         "playCount":  368,
+                         "desc":  "challenger pack, more difficult to complete! Just begin!"
+                     }
+                 ]
 }

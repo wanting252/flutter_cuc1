@@ -47,7 +47,7 @@ class ImageButtonState extends State<ImageButton> {
                 Shadow(
                   blurRadius: 4.0,
                   color: Colors.black.withOpacity(0.5),
-                  offset: Offset(2, 2),
+                  offset: const Offset(2, 2),
                 ),
               ],
             ),

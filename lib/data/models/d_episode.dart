@@ -1,4 +1,7 @@
+import 'package:claude_cuc/config/const.dart';
+
 import 'd_level.dart';
+import 'd_player.dart';
 
 class DEpisode {
   final String id;
@@ -26,7 +29,38 @@ class DEpisode {
     );
   }
 
-  bool isCompleted() => levels.every((level) => level.isCompleted());
-
+  // Return true if all levels in this episode are completed
+  bool isCompleted() {
+    if (levels.isEmpty) return false;
+    
+    bool allCompleted = true;
+    for (var level in levels) {
+      if (!level.isCompleted()) {
+        allCompleted = false;
+        break;
+      }
+    }
+    
+    // Debug
+    print('Episode $id isCompleted check: $allCompleted');
+    return allCompleted;
+  }
+  
+  // Get the required count of completed levels to unlock this episode
   int required() => requiredCount;
+  
+  // Get the description of the episode
+  String get description => desc;
+  
+  // Get the progress percentage of the episode
+  int get progress => DPlayer.getEpisodeProgress(id);
+  
+  // Get total levels in this episode
+  int get totalPictures => levels.length;
+  
+  // Check if this episode is locked
+  bool get isLocked => DPlayer.getState(id) == Consts.LOCKED;
+  
+  // Check if this episode is completed
+  bool get isComplete => DPlayer.getState(id) == Consts.COMPLETED;
 }
