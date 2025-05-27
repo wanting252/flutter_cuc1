@@ -119,7 +119,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     }
   }
 
-  /// Show avatar selection overlay
+  /// Show avatar selection overlay with animation
   void _showAvatarSelection() {
     print("SettingsScreen.showAvatarSelection opening avatar selector");
     
@@ -128,7 +128,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     });
   }
 
-  /// Close avatar selection overlay
+  /// Close avatar selection overlay with animation
   void _closeAvatarSelection() {
     print("SettingsScreen.closeAvatarSelection closing avatar selector");
     
@@ -175,8 +175,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         // Player profile section
                         _buildPlayerProfileSection(),
                         
-                        // Separator
-                        _buildSeparator(),
+                        // Main separator (32px) between avatar and settings
+                        _buildMainSeparator(),
                         
                         // Settings options
                         _buildSettingsOptions(),
@@ -223,13 +223,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     color: const Color(0xFF33CCCC),
-                    border: Border.all(
-                      color: Colors.white,
-                      width: Consts.getDimension(context, 4.0),
-                    ),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black.withAlpha(25),
+                        color: Colors.black.withAlpha(51), // Drop shadow
                         offset: Offset(0, Consts.getDimension(context, 4.0)),
                         blurRadius: Consts.getDimension(context, 8.0),
                       ),
@@ -322,10 +318,18 @@ class _SettingsScreenState extends State<SettingsScreen> {
     );
   }
 
-  /// Build a separator line
-  Widget _buildSeparator() {
+  /// Build a separator line for between avatar section and settings
+  Widget _buildMainSeparator() {
     return Container(
-      height: Consts.getDimension(context, 32.0), // Changed from 16 to 32 for proper gap
+      height: Consts.getDimension(context, 32.0), // 32px gap for avatar section
+      color: const Color(Consts.COLOR_LINE_GRAY),
+    );
+  }
+
+  /// Build a thin separator line between setting rows
+  Widget _buildRowSeparator() {
+    return Container(
+      height: Consts.getDimension(context, 1.0), // 1px gap between setting rows
       color: const Color(Consts.COLOR_LINE_GRAY),
     );
   }
@@ -342,7 +346,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             trailing: _buildToggleSwitch(DPlayer.isSoundEnabled, _toggleSound),
           ),
           
-          _buildSeparator(),
+          _buildRowSeparator(),
           
           // Music setting
           _buildSettingItem(
@@ -350,7 +354,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             trailing: _buildToggleSwitch(DPlayer.isMusicEnabled, _toggleMusic),
           ),
           
-          _buildSeparator(),
+          _buildRowSeparator(),
           
           // Rate Game
           _buildSettingItem(
@@ -367,7 +371,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             },
           ),
           
-          _buildSeparator(),
+          _buildRowSeparator(),
           
           // About Us
           _buildSettingItem(
@@ -384,7 +388,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             },
           ),
           
-          _buildSeparator(),
+          _buildRowSeparator(),
           
           // Our Fanpage
           _buildSettingItem(
@@ -411,15 +415,17 @@ class _SettingsScreenState extends State<SettingsScreen> {
     Widget? trailing,
     VoidCallback? onTap,
   }) {
-    // Fixed line height = 0.1 of screen height for consistent appearance
+    // Row height = max(0.08 screen height, Consts.getDimension(context, 120.0))
     final screenHeight = MediaQuery.of(context).size.height;
-    final lineHeight = screenHeight * 0.1; // 0.1 of screen height
+    final calculatedHeight = screenHeight * 0.08;
+    final minimumHeight = Consts.getDimension(context, 120.0);
+    final lineHeight = calculatedHeight > minimumHeight ? calculatedHeight : minimumHeight;
     final horizontalPadding = Consts.getDimension(context, 24.0);
     
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        height: lineHeight, // Fixed height = 0.1 screen height
+        height: lineHeight, // Height = max(0.08 screen height, Consts.getDimension(context, 120.0))
         padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
         color: Colors.white,
         child: Row(
@@ -445,8 +451,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   /// Build a toggle switch widget
   Widget _buildToggleSwitch(bool value, ValueChanged<bool> onChanged) {
+    // Calculate switch size to match text height
+    final textFontSize = Consts.getFontSize(context, 36.0);
+    final switchScale = textFontSize / 24.0; // Default switch height is ~24px
+    
     return Transform.scale(
-      scale: 1.5, // Changed from 1.2 to 1.5
+      scale: switchScale,
       child: Switch(
         value: value,
         onChanged: onChanged,
@@ -460,10 +470,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   /// Build the reset game button
   Widget _buildResetGameButton() {
-    final buttonWidth = Consts.getDimension(context, 600.0);
-    final buttonHeight = Consts.getDimension(context, 120.0);
-    final buttonMargin = Consts.getDimension(context, 40.0);
-    final borderRadius = Consts.getRadius(context, 60.0);
+    final buttonWidth = Consts.getDimension(context, 520.0);
+    final buttonHeight = Consts.getDimension(context, 128.0);
+    final buttonMargin = Consts.getDimension(context, 64.0);
+    final borderRadius = Consts.getRadius(context, 64.0);
     
     return Container(
       margin: EdgeInsets.all(buttonMargin),
@@ -495,7 +505,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               'RESET GAME',
               style: TextStyle(
                 color: Colors.white,
-                fontSize: Consts.getFontSize(context, 42.0),
+                fontSize: Consts.getFontSize(context, 48.0),
                 fontFamily: Consts.FONT_MAIN, // Already using FONT_MAIN
                 fontWeight: FontWeight.normal,
                 height: 1.0,
@@ -507,126 +517,164 @@ class _SettingsScreenState extends State<SettingsScreen> {
     );
   }
 
-  /// Build the avatar selector overlay
+  /// Build the avatar selector overlay with animations
   Widget _buildAvatarSelectorOverlay() {
-    return Container(
-      color: Colors.black.withAlpha(128),
-      child: Center(
+    return AnimatedOpacity(
+      opacity: _showAvatarSelectorOverlay ? 1.0 : 0.0,
+      duration: const Duration(milliseconds: 600),
+      child: AnimatedScale(
+        scale: _showAvatarSelectorOverlay ? 1.0 : 0.0,
+        duration: const Duration(milliseconds: 600),
         child: Container(
-          width: Consts.getDimension(context, 800.0),
-          height: Consts.getDimension(context, 900.0),
-          decoration: BoxDecoration(
-            color: const Color(0xFFF5F5F5),
-            borderRadius: BorderRadius.circular(Consts.getRadius(context, 16.0)),
-          ),
-          child: Column(
-            children: [
-              // Avatar grid
-              Expanded(
-                child: Padding(
-                  padding: EdgeInsets.all(Consts.getDimension(context, 40.0)),
-                  child: GridView.builder(
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 3,
-                      childAspectRatio: 1.0,
-                      crossAxisSpacing: 20.0,
-                      mainAxisSpacing: 20.0,
-                    ),
-                    itemCount: Consts.listAvatars.length,
-                    itemBuilder: (context, index) {
-                      return _buildAvatarOption(index);
-                    },
-                  ),
-                ),
-              ),
-              
-              // Close button
-              Container(
-                margin: EdgeInsets.all(Consts.getDimension(context, 20.0)),
-                child: GestureDetector(
-                  onTap: _closeAvatarSelection,
-                  child: Container(
-                    width: Consts.getDimension(context, 300.0),
-                    height: Consts.getDimension(context, 80.0),
-                    decoration: BoxDecoration(
-                      color: const Color(0xFF4169E1),
-                      borderRadius: BorderRadius.circular(Consts.getRadius(context, 40.0)),
-                    ),
-                    child: Center(
-                      child: Text(
-                        'CLOSE',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: Consts.getFontSize(context, 32.0),
-                          fontFamily: Consts.FONT_MAIN,
-                          fontWeight: FontWeight.normal,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ],
+          color: Colors.black.withAlpha(51), // Full screen black with 0.2 alpha
+          child: Center(
+            child: _buildAvatarSelectionContent(),
           ),
         ),
       ),
     );
   }
 
+  /// Build the avatar selection content
+  Widget _buildAvatarSelectionContent() {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final gap = Consts.getDimension(context, 44.0);
+    final avatarWidth = (screenWidth - gap * 4) / 3; // (screenWidth - gap * 4) / 3
+    final avatarHeight = (320 / 300) * avatarWidth; // Keep 320/300 ratio
+    
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        // Avatar grid - 3 columns, 2 rows
+        Container(
+          padding: EdgeInsets.all(gap),
+          child: Column(
+            children: [
+              // First row
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  _buildAvatarOption(0, avatarWidth, avatarHeight),
+                  SizedBox(width: gap),
+                  _buildAvatarOption(1, avatarWidth, avatarHeight),
+                  SizedBox(width: gap),
+                  _buildAvatarOption(2, avatarWidth, avatarHeight),
+                ],
+              ),
+              SizedBox(height: gap),
+              // Second row
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  _buildAvatarOption(3, avatarWidth, avatarHeight),
+                  SizedBox(width: gap),
+                  _buildAvatarOption(4, avatarWidth, avatarHeight),
+                  SizedBox(width: gap),
+                  _buildAvatarOption(5, avatarWidth, avatarHeight),
+                ],
+              ),
+            ],
+          ),
+        ),
+        
+        SizedBox(height: gap),
+        
+        // Close button with gradient
+        GestureDetector(
+          onTap: _closeAvatarSelection,
+          child: Container(
+            width: Consts.getDimension(context, 300.0),
+            height: Consts.getDimension(context, 92.0),
+            decoration: BoxDecoration(
+              gradient: const LinearGradient(
+                begin: Alignment.centerLeft,
+                end: Alignment.centerRight,
+                colors: [
+                  Color(0xFF8763FD), // From 0x8763fd
+                  Color(0xFF2A85F6), // To 0x2a85f6
+                ],
+              ),
+              borderRadius: BorderRadius.circular(Consts.getRadius(context, 40.0)),
+            ),
+            child: Center(
+              child: Text(
+                'CLOSE',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: Consts.getFontSize(context, 40.0),
+                  fontFamily: Consts.FONT_MAIN,
+                  fontWeight: FontWeight.normal,
+                ),
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
   /// Build a single avatar option in the selector
-  Widget _buildAvatarOption(int index) {
+  Widget _buildAvatarOption(int index, double avatarWidth, double avatarHeight) {
     final isSelected = index == DPlayer.currentAvatarIndex;
-    final avatarSize = Consts.getDimension(context, 120.0);
+    final checkSize = avatarWidth * 0.25; // Check size = 0.3 * avatarWidth
     
     return GestureDetector(
       onTap: () => _selectAvatar(index),
-      child: Container(
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          color: const Color(0xFF33CCCC),
-          border: Border.all(
-            color: isSelected ? const Color(0xFF4CAF50) : Colors.white,
-            width: Consts.getDimension(context, isSelected ? 6.0 : 3.0),
-          ),
-        ),
+      child: SizedBox(
+        width: avatarWidth,
+        height: avatarHeight, // Increase height to accommodate lowered check icon
         child: Stack(
           children: [
-            ClipOval(
-              child: Image.asset(
-                '${Consts.PATH_ICONS}${Consts.listAvatars[index]}',
-                width: avatarSize,
-                height: avatarSize,
-                fit: BoxFit.cover,
-                errorBuilder: (context, error, stackTrace) {
-                  return Container(
-                    color: const Color(0xFF33CCCC),
-                    child: Icon(
-                      Icons.person,
-                      size: avatarSize * 0.6,
-                      color: Colors.white,
-                    ),
-                  );
-                },
+            // Avatar image with drop shadow, no border
+            Container(
+              width: avatarWidth,
+              height: avatarHeight,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withAlpha(25), // Drop shadow
+                    offset: Offset(0, Consts.getDimension(context, 4.0)),
+                    blurRadius: Consts.getDimension(context, 8.0),
+                  ),
+                ],
+              ),
+              child: ClipOval(
+                child: Image.asset(
+                  '${Consts.PATH_ICONS}${Consts.listAvatars[index]}',
+                  width: avatarWidth,
+                  height: avatarHeight,
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) {
+                    return Container(
+                      color: const Color(0xFF33CCCC),
+                      child: Icon(
+                        Icons.person,
+                        size: avatarWidth * 0.6,
+                        color: Colors.white,
+                      ),
+                    );
+                  },
+                ),
               ),
             ),
             
-            // Selected indicator
+            // Selected indicator - align center x, bottom y (lowered by 8px)
             if (isSelected)
-              Positioned.fill(
-                child: Align(
-                  alignment: Alignment.bottomRight,
-                  child: Container(
-                    width: Consts.getDimension(context, 30.0),
-                    height: Consts.getDimension(context, 30.0),
-                    decoration: const BoxDecoration(
-                      color: Color(0xFF4CAF50),
-                      shape: BoxShape.circle,
-                    ),
-                    child: Icon(
-                      Icons.check,
-                      color: Colors.white,
-                      size: Consts.getDimension(context, 20.0),
-                    ),
+              Positioned(
+                left: (avatarWidth - checkSize) / 2, // Center X
+                bottom: 0, // Bottom point lowered by 8px
+                child: Container(
+                  width: checkSize, // width = 0.3 * avatarWidth
+                  height: checkSize, // height = width
+                  decoration: const BoxDecoration(
+                    color: Color(0xFF4CAF50),
+                    shape: BoxShape.circle,
+                  ),
+                  child: Icon(
+                    Icons.check,
+                    color: Colors.white,
+                    size: checkSize * 0.6, // Icon size proportional to container
                   ),
                 ),
               ),
