@@ -159,7 +159,7 @@ class EpisodeButton extends StatelessWidget {
                         Text(
                           episode.name,
                           style: TextStyle(
-                            color: const Color(Consts.COLOR_MAIN_TEXT),
+                            color: const Color(Consts.COLOR_MAIN),
                             fontSize: titleFontSize,
                             fontFamily: Consts.FONT_TITLE,
                             height: 1.0,

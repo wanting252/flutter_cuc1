@@ -402,6 +402,7 @@ class DPlayer {
   }
   
   /// Check if current daily mission index matches the date
+  // ignore: unused_element
   static bool _isCurrentDailyMissionForDate(DateTime date) {
     // Implementation depends on how you want to associate missions with dates
     // For now, we'll use a simple approach based on saved date

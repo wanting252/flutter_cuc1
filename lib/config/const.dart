@@ -14,7 +14,7 @@ class AppColors {
   static const Color progressBarEnd = Color(0xFFFFCC00);
   
   // Text colors
-  static const Color primaryText = Color(0xFF444444);
+  static const Color primaryText = Color(0xFF34495e);
   static const Color secondaryText = Color(0xFF888888);
   
   // Button colors
@@ -46,6 +46,19 @@ class Consts {
   static const int COMPLETED = 0;
   static const int LOCKED = -1;
   
+  // Zoom levels for PictureComponent
+  static const int SCALE_LEVEL_1 = 1;
+  static const int SCALE_LEVEL_2 = 2;
+  static const int SCALE_LEVEL_3 = 3;
+  
+  // Option component constants
+  static const int OPTION_COLS = 7; // 7 columns in option grid
+  static const int OPTION_ROWS = 2; // 2 rows in option grid
+  
+  // Answer component constants
+  static const double ANSWER_CELL_HEIGHT = 55.0; // ANSWER cell height
+  static const double ANSWER_CELL_GAP = 24.0; // lines between ANSWER words, used for AnswerComponent
+  
   // UI Constants
   static const double LEVEL_HEIGHT = 300.0;
   
@@ -54,6 +67,7 @@ class Consts {
   
   // Colors
   static const int COLOR_MAIN_TEXT = 0xFF00b2f2;
+  static const int COLOR_MAIN = 0xFF00b2f2;
   static const int COLOR_STATE = 0xFFD0F7FE;
   static const int COLOR_DESCRIPTION = 0xFF777F8C;
   static const int COLOR_PROGRESS_BAR = 0xFF00A3FF;
@@ -104,7 +118,7 @@ class Consts {
   static const double mockupHeight = 1920.0;
   
   /// Returns a responsive font size based on device type and screen size
-  /// Prevents text from becoming too large on smaller screens
+  /// Prevents text from becoming too small on smaller screens
   static double getFontSize(BuildContext context, double fontSize) {
     // Calculate the scaling factor based on screen width relative to mockup width
     final screenWidth = MediaQuery.of(context).size.width;
@@ -113,28 +127,25 @@ class Consts {
     // Get the breakpoint name
     final breakpointName = ResponsiveBreakpoints.of(context).breakpoint.name;
     
-    
     // Apply device-specific scaling adjustments
     switch (breakpointName) {
       case MOBILE:
-        // For mobile devices, use a more aggressive scaling down
-        // to prevent text from becoming too large
-        
-        // For very small screens (< 400px), use even more constraints
+        // For mobile devices, use less aggressive scaling to keep text readable
+        // For very small screens (< 400px), use reasonable constraints
         if (screenWidth < 400) {
-          return fontSize * 0.35; // Fixed multiplier for very small screens
+          return fontSize * 0.5; // Less aggressive scaling for small screens
         }
         
-        // For regular mobile screens, use constrained scaling
-        return fontSize * (scaleFactor * 0.65).clamp(0.35, 0.5);
+        // For regular mobile screens, use less constrained scaling
+        return fontSize * (scaleFactor * 0.8).clamp(0.5, 0.7); // Increased minimum and scaling
         
       case TABLET:
         // For tablets, use slightly reduced scaling
-        return fontSize * (scaleFactor * 0.8).clamp(0.5, 0.75);
+        return fontSize * (scaleFactor * 0.9).clamp(0.7, 0.9); // Increased scaling
         
       case DESKTOP:
         // For desktop, use a more standard scaling approach
-        return fontSize * scaleFactor.clamp(0.6, 1.0);
+        return fontSize * scaleFactor.clamp(0.8, 1.0);
         
       case '4K':
         // For very large screens, prevent text from becoming too large
@@ -142,7 +153,7 @@ class Consts {
         
       default:
         // Fallback scaling that should work reasonably well
-        return fontSize * 0.5;
+        return fontSize * 0.6; // Increased fallback
     }
   }
   

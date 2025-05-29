@@ -24,7 +24,7 @@ class ListEpisodeScreen extends StatelessWidget {
                 fontFamily: Consts.FONT_TITLE,
                 fontSize: Consts.getFontSize(context, 48),
                 fontWeight: FontWeight.bold,
-                color: const Color(Consts.COLOR_MAIN_TEXT),
+                color: const Color(Consts.COLOR_MAIN),
               ),
             ),
             SizedBox(height: Consts.getSpacing(context, 10)),
